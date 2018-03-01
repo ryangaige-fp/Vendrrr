@@ -9,10 +9,12 @@ function VenderController(){
 
   }
 
+
   //public parts
 
-  //we need a function to add money here
   
+  //we need a function to take money from our "view" and pass it to our service
+
 
 
 }
