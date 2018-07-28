@@ -1,6 +1,7 @@
+let money = 0;
+
 function VenderService() {
   //private parts
-  let money = 0;
 
   //our purchaseable items, add some of your own!
   //we could add an id property to these items to display location for purchasing(A1, D4, etc)
@@ -38,7 +39,13 @@ function VenderService() {
   ];
 
   items.push(
-    new Items("Fruit Snack Gummies", "Fruit salad done right.", 1.0, 45),
+    new Items(
+      "Fruit Snack Gummies",
+      "assets/photos/FruitSnacks.jpg",
+      "Fruit salad done right.",
+      1.0,
+      45
+    ),
     new Items(
       "Plant Food",
       "Are you hungry? I could use a light snack.",
@@ -50,8 +57,9 @@ function VenderService() {
     new Items("The Void", "This snack eats you!", 3.25, 1)
   );
 
-  function Items(name, description, price, amount) {
+  function Items(name, image, description, price, amount) {
     this.name = name;
+    this.image = image;
     this.description = description;
     this.price = price;
     this.amount = amount;
@@ -63,6 +71,7 @@ function VenderService() {
       let item = items[i];
       let itemCopy = {
         name: item.name,
+        image: items.image,
         description: item.description,
         price: item.price,
         amount: item.amount

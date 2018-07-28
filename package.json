@@ -1,0 +1,23 @@
+{
+  "name": "vendrrr",
+  "version": "1.0.0",
+  "description": "#### Objective: Students will use javascript, combined with the MVC architectural pattern to interact with the DOM to create a dynamic webpage. The goal of this project is to build a machine for the Vendrrr company! We want to be able to add quarters from the user interface(a button) and have our application pass the input data safely through and update our stored data on our service(increase the currency total). We will draw purchaseable items to the screen and let the user select one to purchase via a button on the item from the user interface. This should again safely relay that information from our \"view\" through to our stored data to allow the purchase and decrease the currency total our user has. Then draw the purchased item to the screen.",
+  "main": "app.js",
+  "dependencies": {
+    "eslint": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryangaige-fp/Vendrrr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryangaige-fp/Vendrrr/issues"
+  },
+  "homepage": "https://github.com/ryangaige-fp/Vendrrr#readme"
+}
