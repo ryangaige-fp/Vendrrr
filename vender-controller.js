@@ -19,7 +19,7 @@ function VenderController() {
         <p>${item.description}</p>
         <p>Price: $ ${item.price}</p>
         <h4>Qty: ${item.amount}</h4>
-        <button onclick="app.controllers.VenderController.purchase(${i})" </button>
+        <button onclick="app.controllers.VenderController.purchase(${i})">Purchase</button>
       </div>
       
       `;
