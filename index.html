@@ -17,12 +17,42 @@
       <div class="col-12">
         <h1>Vendrrr!</h1>
         <h5>Items:</h5>
-        <div id="items" class="row">
-
+        <div id="items" class="row itemsStyle pb-3 p-3">
 
 
         </div>
-        <h5>Money: $
+        <div class="col-12 pr-3 m-3">
+          <h3>Add your own Snack!</h3>
+          <form class="formSubmit pb-3 pt-3 align-items-center" onsubmit="app.controllers.makeSnack(event)">
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label for="title">Snack Name</label>
+                <input type="text" class="form-control " id="title" placeholder="Snack Name" value="" name="title" required>
+
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="description">Description</label>
+                <input type="text" class="form-control " id="" placeholder="Description" value="" name="description" required>
+              </div>
+
+            </div>
+            <div class="form-row">
+              <div class="col-md-3 mb-3">
+                <label for="price">Price $</label>
+                <input type="text" class="form-control " id="" placeholder="Price" name="price" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="amount">Amount</label>
+                <input type="text" class="form-control " id="" placeholder="Quantity" name="amount" required>
+
+              </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit Snack</button>
+          </form>
+        </div>
+
+        <h5 class="pt-3">Money: $
           <span id="money"></span>
         </h5>
         <button onclick="app.controllers.venderController.addMoney()">Add Quarter</button>

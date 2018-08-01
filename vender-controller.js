@@ -3,50 +3,84 @@ function VenderController() {
   let venderService = new VenderService();
 
   //items is an array we need to get from the service and give to drawItems
-  function drawItems() {
-    let items = venderService.getItems();
-    let itemsElem = document.getElementById("items");
-    let template = "";
-    //for
-
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-
-      template += `
-      <div class="col-3 ">
-        <h1>${item.name}</h1>
-        <img src="${item.image}" alt="">
-        <p>${item.description}</p>
-        <p>Price: $ ${item.price}</p>
-        <h4>Qty: ${item.amount}</h4>
-        <button onclick="app.controllers.VenderController.purchase(${i})">Purchase</button>
-      </div>
-      
-      `;
-    }
-    itemsElem.innerHTML = template;
-
-    //we will take in a paramter(items) and iterate over it to build
+  function drawItems(items) {
+    let money = venderService.getMoney();
+    //we will take in a parameter(items) and iterate over it to build
     //a template to draw to the screen.
+    let template = "";
+
+    for (let index = 0; index < items.length; index++) {
+      const item = items[index];
+
+      if (money < item.price) {
+        template += `
+        <div style="outline: 1px solid black" class="col-3">
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+              <p>$ ${item.price}</p>
+              <p>Qty: ${item.amount}</p>
+              <button disabled onclick="app.controllers.venderController.purchase(${index})">Purchase</button>
+        </div>
+        `;
+      } else {
+        template += `
+        <div style="outline: 1px solid red;" class="col-3">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <p>$ ${item.price}</p>
+        <p>Qty: ${item.amount}</p>
+        <button onclick="app.controllers.venderController.purchase(${index})">Purchase</button>
+        </div>
+        `;
+      }
+      document.getElementById("items").innerHTML = template;
+      document.getElementById("money").innerText = money;
+    }
   }
 
-  function drawMoney() {
-    document.getElementById("money").innerText = venderService.getMoney();
+  function drawPurchased(item) {
+    let template = `
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+        <p>$ ${item.price}</p>
+    `;
+    document.getElementById("purchased").innerHTML = template;
   }
+
   //public parts
-  //we need a function to take money from our "view" and pass it to our service
+
+  this.makeSnack = function(event) {
+    event.preventDefault();
+    let formData = event.target;
+
+    let newSnack = {
+      title: formData.title.value,
+      description: formData.description.value,
+      price: formData.price.value,
+      quantity: formData.amount.value
+    };
+    venderService.makeSnack(newSnack);
+    formData.title.value = "";
+    formData.description.value = "";
+    formData.price.value = "";
+    formData.amount = "";
+
+    drawItems(venderService.makeSnack());
+  };
 
   this.purchase = function(index) {
-    venderService.purchase(index);
-    drawMoney();
+    let item = venderService.purchase(index);
+    drawItems(venderService.getItems());
+    if (item) {
+      drawPurchased(item);
+    }
+  };
+
+  //we need a function to take money from our "view" and pass it to our service
+  this.addMoney = function() {
+    venderService.addMoney();
     drawItems(venderService.getItems());
   };
 
-  this.addMoney = function() {
-    venderService.addMoney();
-    drawMoney();
-  };
-
-  drawMoney();
   drawItems(venderService.getItems());
 }
