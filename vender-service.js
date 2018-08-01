@@ -79,8 +79,7 @@ function VenderService() {
   };
 
   this.makeSnack = function(newSnack) {
-    let snack = [];
-    snacks.push(
+    items.push(
       new Snack(
         newSnack.title,
         newSnack.description,
@@ -88,8 +87,7 @@ function VenderService() {
         newSnack.amount
       )
     );
-    return snack;
-    console.log(snack);
+    console.log(items);
   };
 
   this.getMoney = function() {

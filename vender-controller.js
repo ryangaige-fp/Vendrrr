@@ -65,7 +65,7 @@ function VenderController() {
     formData.price.value = "";
     formData.amount = "";
 
-    drawItems(venderService.makeSnack());
+    drawItems(venderService.getItems());
   };
 
   this.purchase = function(index) {
